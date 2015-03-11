@@ -328,7 +328,7 @@ class MoneyTest extends \PHPUnit_Framework_TestCase
         $r = $a->allocateToTargets(10);
 
         $this->assertEquals(
-            [
+            array(
                 new Money(10, new Currency('EUR')),
                 new Money(10, new Currency('EUR')),
                 new Money(10, new Currency('EUR')),
@@ -339,7 +339,7 @@ class MoneyTest extends \PHPUnit_Framework_TestCase
                 new Money(10, new Currency('EUR')),
                 new Money(10, new Currency('EUR')),
                 new Money(9, new Currency('EUR'))
-            ],
+            ),
             $r
         );
     }
@@ -393,13 +393,13 @@ class MoneyTest extends \PHPUnit_Framework_TestCase
     public function testCanBeAllocatedByRatios()
     {
         $a = new Money(5, new Currency('EUR'));
-        $r = $a->allocateByRatios([3, 7]);
+        $r = $a->allocateByRatios(array(3, 7));
 
         $this->assertEquals(
-            [
+            array(
                 new Money(2, new Currency('EUR')),
                 new Money(3, new Currency('EUR'))
-            ],
+            ),
             $r
         );
     }
