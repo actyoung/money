@@ -52,7 +52,7 @@ class MoneyTest extends \PHPUnit_Framework_TestCase
     {
         $m = new Money(0, new Currency('EUR'));
 
-        $this->assertInstanceOf(Money::class, $m);
+        $this->assertInstanceOf(Money, $m);
 
         return $m;
     }
