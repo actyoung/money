@@ -37,12 +37,12 @@ class Money implements \JsonSerializable
     /**
      * @var integer[]
      */
-    private static $roundingModes = [
+    private static $roundingModes = array(
         PHP_ROUND_HALF_UP,
         PHP_ROUND_HALF_DOWN,
         PHP_ROUND_HALF_EVEN,
         PHP_ROUND_HALF_ODD
-    ];
+    );
 
     /**
      * @param  integer                                  $amount
@@ -107,10 +107,10 @@ class Money implements \JsonSerializable
      */
     public function jsonSerialize()
     {
-        return [
+        return array(
             'amount'   => $this->amount,
             'currency' => $this->currency->getCurrencyCode()
-        ];
+        );
     }
 
     /**
@@ -236,7 +236,7 @@ class Money implements \JsonSerializable
         $low       = $this->newMoney(intval($this->amount / $n));
         $high      = $this->newMoney($low->getAmount() + 1);
         $remainder = $this->amount % $n;
-        $result    = [];
+        $result    = array();
 
         for ($i = 0; $i < $remainder; $i++) {
             $result[] = $high;
@@ -259,7 +259,7 @@ class Money implements \JsonSerializable
     public function allocateByRatios(array $ratios)
     {
         /** @var \SebastianBergmann\Money\Money[] $result */
-        $result    = [];
+        $result    = array();
         $total     = array_sum($ratios);
         $remainder = $this->amount;
 
@@ -300,10 +300,10 @@ class Money implements \JsonSerializable
             )
         );
 
-        return [
+        return array(
             'percentage' => $percentage,
             'subtotal'   => $this->subtract($percentage)
-        ];
+        );
     }
 
     /**
