@@ -1134,11 +1134,11 @@ class Currency
      */
     public function __construct($currencyCode)
     {
-        if (!isset(self::$currenciesarray[$currencyCode])) {
+        if (!isset(self::$currencies[$currencyCode])) {
             $currencyCode = strtoupper($currencyCode);
         }
 
-        if (!isset(self::$currenciesarray[$currencyCode])) {
+        if (!isset(self::$currencies[$currencyCode])) {
             throw new InvalidArgumentException(
                 sprintf('Unknown currency code "%s"', $currencyCode)
             );
@@ -1156,7 +1156,7 @@ class Currency
      */
     public static function addCurrency($code, $displayName, $numericCode, $defaultFractionDigits, $subUnit)
     {
-        self::$currenciesarray[$code] = array(
+        self::$currencies[$code] = array(
             'display_name' => $displayName,
             'numeric_code' => $numericCode,
             'default_fraction_digits' => $defaultFractionDigits,
@@ -1190,7 +1190,7 @@ class Currency
      */
     public function getDefaultFractionDigits()
     {
-        return self::$currenciesarray[$this->currencyCode]['default_fraction_digits'];
+        return self::$currencies[$this->currencyCode]['default_fraction_digits'];
     }
 
     /**
@@ -1200,7 +1200,7 @@ class Currency
      */
     public function getDisplayName()
     {
-        return self::$currenciesarray[$this->currencyCode]['display_name'];
+        return self::$currencies[$this->currencyCode]['display_name'];
     }
 
     /**
@@ -1210,7 +1210,7 @@ class Currency
      */
     public function getNumericCode()
     {
-        return self::$currenciesarray[$this->currencyCode]['numeric_code'];
+        return self::$currencies[$this->currencyCode]['numeric_code'];
     }
 
     /**
@@ -1220,7 +1220,7 @@ class Currency
      */
     public function getSubUnit()
     {
-        return self::$currenciesarray[$this->currencyCode]['sub_unit'];
+        return self::$currencies[$this->currencyCode]['sub_unit'];
     }
 
     /**
