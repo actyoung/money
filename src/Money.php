@@ -50,7 +50,7 @@ class Money
      * @throws \SebastianBergmann\Money\InvalidArgumentException
      */
     public function __construct($amount, $currency)
-    {
+    { 
         if (!is_int($amount)) {
             throw new InvalidArgumentException('$amount must be an integer');
         }
