@@ -22,46 +22,6 @@ class CurrencyTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers \SebastianBergmann\Money\Currency::__construct
-     */
-    public function testCanBeConstructedFromUppercaseString()
-    {
-        $c = new Currency('EUR');
-
-        $this->assertInstanceOf(Currency, $c);
-
-        return $c;
-    }
-
-    /**
-     * @covers \SebastianBergmann\Money\Currency::__construct
-     */
-    public function testCanBeConstructedFromLowercaseString()
-    {
-        $c = new Currency('eur');
-
-        $this->assertInstanceOf(Currency, $c);
-    }
-
-    /**
-     * @backupStaticAttributes enabled
-     * @covers \SebastianBergmann\Money\Currency::addCurrency
-     * @uses   \SebastianBergmann\Money\Currency::__construct
-     */
-    public function testCustomCurrencyCanBeRegistered()
-    {
-        Currency::addCurrency(
-            'BTC',
-            'Bitcoin',
-            999,
-            4,
-            1000
-        );
-
-        $this->assertInstanceOf(Currency, new Currency('BTC'));
-    }
-
-    /**
      * @covers \SebastianBergmann\Money\Currency::getCurrencies
      */
     public function testRegisterdCurrenciesCanBeAccessed()

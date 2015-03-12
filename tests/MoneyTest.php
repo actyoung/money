@@ -44,34 +44,6 @@ class MoneyTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers \SebastianBergmann\Money\Money::__construct
-     * @covers \SebastianBergmann\Money\Money::handleCurrencyArgument
-     * @uses   \SebastianBergmann\Money\Currency
-     */
-    public function testObjectCanBeConstructedForValidConstructorArguments()
-    {
-        $m = new Money(0, new Currency('EUR'));
-
-        $this->assertInstanceOf(Money, $m);
-
-        return $m;
-    }
-
-    /**
-     * @covers \SebastianBergmann\Money\Money::__construct
-     * @covers \SebastianBergmann\Money\Money::handleCurrencyArgument
-     * @uses   \SebastianBergmann\Money\Currency
-     */
-    public function testObjectCanBeConstructedForValidConstructorArguments2()
-    {
-        $m = new Money(0, 'EUR');
-
-        $this->assertInstanceOf(Money, $m);
-
-        return $m;
-    }
-
-    /**
      * @covers \SebastianBergmann\Money\Money::fromString
      * @uses   \SebastianBergmann\Money\Money::__construct
      * @uses   \SebastianBergmann\Money\Money::handleCurrencyArgument
@@ -550,19 +522,5 @@ class MoneyTest extends \PHPUnit_Framework_TestCase
         $b = new Money(2, new Currency('USD'));
 
         $a->compareTo($b);
-    }
-
-    /**
-     * @covers \SebastianBergmann\Money\Money::jsonSerialize
-     * @uses   \SebastianBergmann\Money\Money::__construct
-     * @uses   \SebastianBergmann\Money\Currency
-     * @uses   \SebastianBergmann\Money\Money::handleCurrencyArgument
-     */
-    public function testCanBeSerializedToJson()
-    {
-        $this->assertEquals(
-            '{"amount":1,"currency":"EUR"}',
-            json_encode(new EUR(1))
-        );
     }
 }
